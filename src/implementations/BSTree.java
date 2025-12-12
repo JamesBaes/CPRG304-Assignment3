@@ -1,13 +1,13 @@
 package implementations;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
 import utilities.BSTreeADT;
 import utilities.Iterator;
 
 /**
  * @author Nathanael Lee
- * @version 1.1 Dec. 10, 2025
+ * @version 1.2 Dec. 12, 2025
  * Class Description: 
  * The implementation for the utility class BSTreeADT.java using the BSTreeADT.java and Iterator.java interfaces
  * using a BSTreeNode.java class to store each individual element in the tree. 
@@ -203,34 +203,66 @@ public class BSTree<E extends Comparable<? super E>> implements BSTreeADT<E>
 	
 	@Override
 	public Iterator<E> inorderIterator() {
-		return new InorderIterator();
+		return new Traverser("InOrder");
 	}
-
-	 private class InorderIterator implements Iterator<E> {
-
-		@Override
-		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public E next() throws NoSuchElementException {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	 }
-	 
+	
 	@Override
 	public Iterator<E> preorderIterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Traverser("PreOrder");
 	}
 
 	@Override
 	public Iterator<E> postorderIterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Traverser("PostOrder");
 	}
 
+	private class Traverser implements Iterator<E> {
+		ArrayList<E> elementList;
+		int index;
+		String type;
+
+	    public Traverser(String type) {
+	    	elementList = new ArrayList<>();
+	    	index = 0;
+	    	this.type = type;
+	    	findOrder(root);
+	    }
+
+	    private void findOrder(BSTreeNode<E> node) {
+	        if (node == null) return;
+	        
+	        if (type == "InOrder") {
+	        	findOrder(node.getLeft());
+	        	elementList.add(node.getElement());
+	        	findOrder(node.getRight());
+	        }
+	        
+	        else if (type == "PreOrder") {
+		        elementList.add(node.getElement());
+		        findOrder(node.getLeft());
+		        findOrder(node.getRight());
+	        }
+	        
+	        else if (type == "PostOrder") {
+	        	findOrder(node.getLeft());
+		        findOrder(node.getRight());
+		        elementList.add(node.getElement());
+	        }
+	    }
+	    
+	    @Override
+	    public boolean hasNext() {
+	        return index < size();
+	    }
+
+	    @Override
+	    public E next() throws NoSuchElementException {
+	        if (!hasNext()) {
+	            throw new NoSuchElementException();
+	        }
+	        E next = elementList.get(index);
+	        index++;
+	        return next;
+	    }
+	}
 }
