@@ -16,7 +16,7 @@ import utilities.Iterator;
  * formats.
  * 
  * @author Nathanael Lee, James Baes, Tony Do, Eian Verastigue
- * @version 1.2 Dec. 12, 2025 Class Description:
+ * @version 1.2 Dec. 12, 2025
  * 
  */
 public class WordTracker {
@@ -115,9 +115,7 @@ public class WordTracker {
 
 	/**
 	 * Saves the current word tree to the repository.ser file
-	 * 
-	 * This method serializes the entire BSTree, preserving all word data for future
-	 * use.
+	 * This method serializes the entire BSTree, preserving all word data for future use.
 	 */
 	public void saveRepository() {
 		try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(REPO_FILE))) {
@@ -129,24 +127,30 @@ public class WordTracker {
 	}
 
 	/**
-	 * Main print method that based on a given option, would display an output
-	 * accordingly.
+	 * Prints word data based on the specified format option
+	 * Writes to the provided output file path.
 	 * 
-	 * @param output The PrintStream to write output to.
-	 * @param option The print format option.
+	 * @param option The print format (-pf, -po, -pl)
+	 * @param outputFilePath The path to write the output to
 	 */
 	public void printWords(String option, String outputFilePath) {
 		if (option != "-pf" && option != "-po" && option != "-pl") {
 			System.out.println("Invalid option: " + option);
 			return;
 		}
-		printWordsWithFiles(option, outputFilePath);
+		try {
+			printWordsWithFiles(option, outputFilePath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
+	 * Helper method that formats and prints word data.
+	 * Iterates through the BST and generates an output based on the provided option.
 	 * 
-	 * 
-	 * @param output the PrintStream to write output to
+	 * @param Option The print format (-pf, -po, -pl)
+	 * @param outputFilePath The path to write the output to
 	 */
 	private void printWordsWithFiles(String Option, String outputFilePath) {
 		Iterator<WordData> iterator = BST.inorderIterator();
@@ -190,11 +194,22 @@ public class WordTracker {
 		}
 		System.out.println(lineData);
 		if (outputFilePath != null) {
-			writeData(outputFilePath, lineData);			
+			try {
+				writeData(outputFilePath, lineData);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
 		}
 	}
 	
-	private void writeData(String outputFile, StringBuilder Data) {
+	/**
+	 * Writes the provided data to a file at the specified path.
+	 * Creates a new file if it doesn't exist.
+	 * 
+	 * @param outputFile The path where the file should be written
+	 * @param data The StringBuilder that contains data to write.
+	 */
+	private void writeData(String outputFile, StringBuilder data) {
 		File File = new File(outputFile);
 		try {
 			if (File.createNewFile()) {
@@ -204,7 +219,7 @@ public class WordTracker {
 			}
 			FileWriter myWriter = new FileWriter(outputFile);
 
-			myWriter.write(Data.toString());
+			myWriter.write(data.toString());
 			myWriter.close();
 			System.out.println("Successfully wrote to the file.");
 
