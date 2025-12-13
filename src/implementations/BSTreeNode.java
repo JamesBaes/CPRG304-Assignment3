@@ -3,7 +3,7 @@ package implementations;
 import java.io.Serializable;
 
 /**
- * @author Nathanael Lee
+ * @author Nathanael Lee, James Baes, Tony Do, Eian Verastigue
  * @version 1.0 Dec. 9, 2025
  * Class Description: 
  * The BSTreeNode that stores each individual element in the tree. 

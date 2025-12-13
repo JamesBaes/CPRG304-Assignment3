@@ -7,7 +7,7 @@ import utilities.BSTreeADT;
 import utilities.Iterator;
 
 /**
- * @author Nathanael Lee
+ * @author Nathanael Lee, James Baes, Tony Do, Eian Verastigue
  * @version 1.2 Dec. 12, 2025
  * Class Description: 
  * The implementation for the utility class BSTreeADT.java using the BSTreeADT.java and Iterator.java interfaces
