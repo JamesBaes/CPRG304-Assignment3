@@ -1,5 +1,6 @@
 package implementations;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import utilities.BSTreeADT;
@@ -13,8 +14,11 @@ import utilities.Iterator;
  * using a BSTreeNode.java class to store each individual element in the tree. 
  */
 
-public class BSTree<E extends Comparable<? super E>> implements BSTreeADT<E>
+public class BSTree<E extends Comparable<? super E>> implements BSTreeADT<E>, Serializable
 {
+	
+	private static final long serialVersionUID = 1L;
+	
 	BSTreeNode<E> root;
 	private int size;
 	

@@ -1,5 +1,7 @@
 package implementations;
 
+import java.io.Serializable;
+
 /**
  * @author Nathanael Lee
  * @version 1.0 Dec. 9, 2025
@@ -7,8 +9,10 @@ package implementations;
  * The BSTreeNode that stores each individual element in the tree. 
  */
 
-public class BSTreeNode<E>
+public class BSTreeNode<E> implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private E Element;
 	private BSTreeNode<E> left, right, parent;
 	
