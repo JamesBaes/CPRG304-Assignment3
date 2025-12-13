@@ -1,0 +1,10 @@
+Key : ===hello=== found in file: res/test1.txt on lines: 1, 2 number of entries: 4
+Key : ===is=== found in file: res/test1.txt on lines: 1 number of entries: 1
+Key : ===it's=== found in file: res/test1.txt on lines: 2 number of entries: 1
+Key : ===kitty=== found in file: res/test1.txt on lines: 1, 2 number of entries: 4
+Key : ===meet=== found in file: res/test1.txt on lines: 2 number of entries: 1
+Key : ===my=== found in file: res/test1.txt on lines: 1 number of entries: 1
+Key : ===name=== found in file: res/test1.txt on lines: 1 number of entries: 1
+Key : ===nice=== found in file: res/test1.txt on lines: 2 number of entries: 1
+Key : ===to=== found in file: res/test1.txt on lines: 2 number of entries: 1
+Key : ===you=== found in file: res/test1.txt on lines: 2 number of entries: 1
