@@ -170,7 +170,7 @@ public class WordTracker {
 					for (int i = 0; i < lineNumbers.size(); i++) {
 						lineData.append(lineNumbers.get(i));
 						
-						totalCount = totalCount + lineNumbers.size();
+						totalCount++;
 						if (i < lineNumbers.size() - 1) {
 							lineData.append(", ");
 						}
