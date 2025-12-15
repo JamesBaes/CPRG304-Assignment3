@@ -6,6 +6,7 @@ import java.io.File;
 /**
  * @author Nathanael Lee, James Baes, Tony Do, Eian Verastigue
  * @version 1.2 Dec. 13, 2025
+ * 
  * Class Description: 
  * The main of the program
  * Separates command line arguments, finds the file to read from and starts the word tracker

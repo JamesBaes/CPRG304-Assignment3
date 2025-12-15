@@ -3,12 +3,15 @@ package implementations;
 import java.io.Serializable;
 
 /**
+ * The BSTreeNode that store each individual element in the tree.
+ * 
+ * Each node contains an element of generic type E and maintains references
+ * to its left child, right child, and parent node.
+ * 
+ * @param <E> the type of element stored in this node
  * @author Nathanael Lee, James Baes, Tony Do, Eian Verastigue
  * @version 1.0 Dec. 9, 2025
- * Class Description: 
- * The BSTreeNode that stores each individual element in the tree. 
  */
-
 public class BSTreeNode<E> implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -16,13 +19,24 @@ public class BSTreeNode<E> implements Serializable
 	private E Element;
 	private BSTreeNode<E> left, right, parent;
 	
+	
+	/**
+	 * Constructor for the BSTreeNode
+	 * 
+	 * @param item the element to be stored in this node
+	 */
 	public BSTreeNode(E item) {
 		Element = item;
 		left = null;
 		right = null;
 	}
 	
-	//gets the height of the node
+	/**
+	 * Gets the height of the node
+	 * 
+	 * @param node the provided BSTreeNode
+	 * @return the height
+	 */
 	int height(BSTreeNode<E> node) {
         if (node == null) {
             return 0; 
@@ -34,7 +48,9 @@ public class BSTreeNode<E> implements Serializable
         }
     }
 	
-	//deletes itself and the nodes connected below it
+	/**
+	 * Deletes itself and the nodes connected below it
+	 */
 	void clear() {
 		if (left != null) {
 			left.clear();			
@@ -45,19 +61,22 @@ public class BSTreeNode<E> implements Serializable
 		delete();
 	}
 	
-	//deletes only itself
+	/**
+	 * Sets all attributes of the BSTreeNode to null;
+	 */
 	void delete() {
 		left = null;
 		right = null;
 		Element = null;
 	}
 	
+	// getters and setters
 	void setElement(E Element) {
 		this.Element = Element; 
 	}
 	
 	void setRight(BSTreeNode<E> Node) {
-		left = Node; 
+		right = Node; 
 	}
 	
 	void setRight(E Element) {

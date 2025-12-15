@@ -16,7 +16,7 @@ import utilities.Iterator;
  * formats.
  * 
  * @author Nathanael Lee, James Baes, Tony Do, Eian Verastigue
- * @version 1.3 Dec. 13, 2025 Class Description:
+ * @version 1.3 Dec. 13, 2025
  * 
  */
 public class WordTracker {
@@ -186,11 +186,7 @@ public class WordTracker {
 		}
 		System.out.println(lineData);
 		if (outputFilePath != null) {
-			try {
-				writeData(outputFilePath, lineData);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}			
+			writeData(outputFilePath, lineData);
 		}
 	}
 	
@@ -198,9 +194,9 @@ public class WordTracker {
 	 * Writes the output of the program into a file given by the user
 	 * 
      * @param outputFile the path of where the output file will be generated
-     * @param Data the data that will be stored into the output file
+     * @param data the data that will be stored into the output file
 	 */
-	private void writeData(String outputFile, StringBuilder Data) {
+	private void writeData(String outputFile, StringBuilder data) {
 		File File = new File(outputFile);
 		try {
 			if (File.createNewFile()) {
